@@ -1,0 +1,29 @@
+
+.circle-tile-heading {
+    border: 1px solid black;
+    border-radius: 100%;
+	color: black;
+	height: 18px;
+	width: 18px;
+	position: relative;
+	/* float:center; */
+  	left: 35%;
+	margin-top: 20px;
+    transition: all 0.3s ease-in-out 0s;
+    
+
+}
+
+@media screen and (max-width: 1140px) {
+	.circle-tile-heading{
+
+	position: relative;
+  	left: 32%;
+	margin-top: 20px;
+	}
+}
+@media screen and (max-width: 768px) {
+	.circle-tile-heading{
+		/* margin-left: 15rem; */
+	}
+}

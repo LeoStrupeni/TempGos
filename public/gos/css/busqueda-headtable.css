@@ -1,0 +1,33 @@
+
+th {
+    background-color: #27395c !important;
+    color: white !important;
+} 
+
+div.dataTables_wrapper div.dataTables_filter {
+	vertical-align: middle;
+    text-align: left;
+    /* margin-left: -65%; */
+}
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: 200%;
+}
+
+    
+    @media screen and (max-width: 767px){
+        div.dataTables_wrapper div.dataTables_filter input, div.dataTables_wrapper div.dataTables_filter{
+        text-align: center;
+        margin-left: 0.5em;
+        display: inline-block;        
+        width:90% !important;
+        text-align: middle;
+    }
+    }
+
+    
+ .dataTables_wrapper .dataTable th, .dataTables_wrapper .dataTable td{
+     color: #27395c;
+     font-weight: 400;
+ }

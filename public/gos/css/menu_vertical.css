@@ -1,0 +1,62 @@
+.vertical-menu {
+ 
+  padding-top: 4.2rem;
+	
+  background-color: white;
+}
+
+.vertical-menu a1 {
+  background-color: #9c9c9c;
+  color: black!important;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+.vertical-menu a1.active {
+  background-color:#27395c;
+  color: white!important;
+}
+.vertical-menu a {
+  background-color: #9c9c9c;
+  color: black!important;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color:#ccc;
+  color: black!important;
+}
+.badge{
+	float: right;
+}
+/* @media screen and (max-width: 1450px) {
+  .vertical-menu{
+
+    width: 200px;
+    margin-top: 55px;
+    padding-block-end: 100%;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .vertical-menu{
+
+    width: 100px;
+    margin-top: 55px;
+    padding-block-end: 100%;
+    
+  }
+}
+@media  screen and (min-width: 1235px) {
+  .vertical-menu{
+
+    width: 150px;
+    margin-top: 55px;
+    padding-block-end: 100%;
+  }
+} */

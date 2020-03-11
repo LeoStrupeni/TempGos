@@ -1,0 +1,31 @@
+
+    /* Campos de Firma */
+      .wrapper {
+      position: relative;
+      margin: 10px auto;
+      width: 500px !important;
+      height: 300px !important;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .signature-pad {
+      position: absolute;
+      border: 2px solid black;
+      background-color: #F0F0F0;
+    }
+
+  .divsInventario{
+    color: white !important;
+    background-color: #15A7CA;
+    justify-content: center !important;
+    margin-bottom: 5px !important;
+    font-weight: 150px !important;
+  }
+
+  .bottonEnviar {
+    font-size: 1.2em;
+    font-weight: 150px !important;
+  }

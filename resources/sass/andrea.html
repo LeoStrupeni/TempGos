@@ -1,0 +1,357 @@
+
+<div class="modal fade" id="modalCliente" role="dialog">
+ 	<div class="modal-dialog modal-m modal-l" role="document">
+    	<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="titleModalCliente"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+			</div>
+      		<div class="modal-body">
+				<form id="clienteForm">
+					@csrf
+					<input type="hidden" name="gos_cliente_id" id="gos_cliente_id">
+					<div class="kt-portlet kt-portlet--tabs">
+						<div class="kt-portlet__head">
+							<div class="kt-portlet__head-toolbar">
+								<ul class="nav nav-tabs nav-tabs-line nav-tabs-line-brand nav-tabs-line-2x nav-tabs-line-right nav-tabs-bold" role="tablist">
+									<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#clienteDatos" role="tab">Cliente</a>
+									</li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#datosFacturacion" role="tab">Datos de facturacón</a>
+									</li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#clienteconfiguracion" role="tab">Configuración</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="kt-portlet__body">
+							<div class="tab-content">
+								<!--DATOS DEL CLIENTE-->
+								<div class="tab-pane active" id="clienteDatos" role="tabpanel">
+									<div class="form-row">
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Nombre(s)</label>
+											<input type="text" class="form-control" name="nombre" id="nombre" required>
+										</div>
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Apellidos</label>
+											<input type="text" class="form-control" name="apellidos" id="apellidos">
+										</div>
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Empresa</label>
+											<input type="text" class="form-control" name="empresa" id="empresa">
+										</div>
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Correo electónico</label>
+											<input type="text" class="form-control" name="email_cliente" id="email_cliente">
+										</div>
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Celular</label>
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<span class="input-group-text"> <img src="/img/mexico-flag.png" alt=""></span>
+												</div>
+												<input type="text" class="form-control" name="celular" id="celular">
+											</div>
+										</div>
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Teléfono</label>
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<span class="input-group-text"> <img src="/img/mexico-flag.png" alt=""></span>
+												</div>
+												<input type="text" class="form-control" name="telefono_fijo" id="telefono_fijo">
+											</div>
+										</div>
+                    <div class="form-group col-6">
+                      <label style="font-size: 1rem;">Calle</label>
+                      <input type="text" class="form-control" name="calle_nro" id="calle_nro">
+                    </div>
+                    <div class="form-group col-6">
+                      <label style="font-size: 1rem;">Número</label>
+                      <input type="text" class="form-control" name="nro_exterior" id="nro_exterior">
+                    </div>
+                    <div class="form-group col-6">
+                      <label style="font-size: 1rem;">Número interior</label>
+                      <input type="text" class="form-control" name="nro_interior" id="nro_interior">
+                    </div>
+                    <!-- {{-- <div class="form-group col-6">
+                      <label style="font-size: 1rem;">Localidad</label>
+                      <select class="form-control kt-selectpicker" data-live-search="true" data-size="3" name="gos_region_localidad_id" id="gos_region_localidad_id">
+                      @if (isset($listaLocalidades))
+                        @foreach ($listaLocalidades as $localidad)
+                        <option value="{{$localidad->gos_region_localidad_id}}"> {{$localidad->nomb_localidad}}</option>
+                        @endforeach
+                      @endif
+                      </select>
+                    </div> --}} -->
+                    <div class="form-group col-6">
+                      <label style="font-size: 1rem;">Código Postal</label>
+                      <input type="text" class="form-control" name="codigo_postal" id="codigo_postal">
+                    </div>
+                    <div class="form-group col-6">
+                      <label style="font-size: 1rem;">Municipio</label>
+                      <select class="form-control kt-selectpicker" data-live-search="true" data-size="5" name="gos_region_municipio_id" id="gos_region_municipio_id" required>
+                      @if(isset($listaMunicipios))
+                        @foreach ($listaMunicipios as $municipio)
+                        <option value="{{$municipio->gos_region_municipio_id}}"> {{$municipio->municipio_estado}}</option>
+                        @endforeach
+                      @endif
+                      </select>
+                    </div>
+                    <!-- {{-- <div class="col-6">
+                      <div class="form-group">
+                        <label style="font-size: 1rem;">Estado</label>
+                        <select class="form-control kt-selectpicker" data-live-search="true" data-size="5" name="estado" id="estado">
+                          @isset($listaEstados)
+                            @foreach($listaEstados as $estado)
+                            <option value="{{$estado->gos_region_estado_id}}">{{$estado->nomb_estado}}</option>
+                            @endforeach
+                          @endisset
+                        </select>
+                      </div>
+                    </div> --}} -->
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label style="font-size: 1rem;">Colonia</label>
+                        <select class="form-control kt-selectpicker" data-live-search="true" data-size="5" name="gos_region_colonia_id" id="gos_region_colonia_id">
+                          @foreach($listaColonias as $colonia)
+                          <option value="{{$colonia->gos_region_colonia_id}}">{{$colonia->nomb_asentamiento}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+									</div>
+									<!-- {{-- <div class="kt-portlet">
+										<div class="kt-portlet__body p-0">
+											<div class="accordion accordion-light">
+												<div class="card">
+													<div class="card-header" id="headingOne">
+														<div class="card-title" data-toggle="collapse" data-target="#agregarvehiculo" aria-expanded="false">
+															<i class="flaticon2-plus"></i> Agregar Vehículo
+														</div>
+													</div>
+													<div id="agregarvehiculo" class="collapse">
+														<div class="card-body row">
+															<div class="form-row">
+																<div class="form-group col-6">
+																	<label style="font-size: 1rem;">Marca</label>
+																	<select class="custom-select" name="marca_vehiculo" id="marca_vehiculo">
+																	@isset($listadoMarcas)
+																		@foreach ($listadoMarcas as $marca)
+																		<option value="{{$marca->gos_vehiculo_marca_id}}">{{$marca->marca_vehiculo}}</option>
+																		@endforeach
+																	@endisset
+																	</select>
+																</div>
+																<div class="form-group col-6">
+																	<label style="font-size: 1rem;">Modelo</label>
+																	<select class="custom-select" name="modelo_vehiculo" id="modelo_vehiculo">
+																	@isset($listadoModelos)
+																		@foreach ($listadoModelos as $modelo)
+																		<option value="{{$modelo->gos_vehiculo_modelo_id}}">{{$marca->modelo_vehiculo}}</option>
+																		@endforeach
+																	@endisset
+																	</select>
+																</div>
+																<div class="form-group col-6">
+																	<label style="font-size: 1rem;">Año</label>
+																	<input type="text" class="form-control" name="anio_vehiculo" id="anio_vehiculo">
+																</div>
+																<div class="form-group col-6">
+																	<label style="font-size: 1rem;">Color</label>
+																	<select class="custom-select" name="color_vehiculo" id="color_vehiculo">
+																	@isset($listadoColores)
+																		@foreach ($listadoColores as $Color)
+																		<option value="{{$color->gos_vehiculo_color_id}}">{{$color->color}}</option>
+																		@endforeach
+																	@endisset
+																	</select>
+																</div>
+																<div class="form-group col-6">
+																	<label style="font-size: 1rem;"># económico</label>
+																	<input type="text" class="form-control" name="economico" id="economico">
+																</div>
+																<div class="form-group col-6">
+																	<label style="font-size: 1rem;"># placa</label>
+																	<input type="text" class="form-control" name = "placa" id="placa">
+																</div>
+																<div class="form-group col-6">
+																	<label style="font-size: 1rem;"># de serie</label>
+																	<input type="text" class="form-control" name="nro_serie" id="nro_serie">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>  -->
+								</div>
+							<!--DATOS DE FACTURACION-->
+								<div class="tab-pane" id="datosFacturacion" role="tabpanel">
+									<div class="form-row">
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Persona Física o Moral</label>
+											<select class="form-control kt-selectpicker" data-live-search="true" data-size="5" name="gos_fac_tipo_persona_id" id="gos_fac_tipo_persona_id" required>
+											@if (isset($listaTipoPersonas))
+												@foreach ($listaTipoPersonas as $tipoPersona)
+												<option value="{{$tipoPersona->gos_fac_tipo_persona_id}}"> {{$tipoPersona->tipo_persona}}</option>
+												@endforeach
+											@endif
+											</select>
+										</div>
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Razón social</label>
+											<input type="text" class="form-control" name="razon_social" id="razon_social">
+										</div>
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">RFC</label>
+											<input type="text" class="form-control" name="rfc" id="rfc">
+										</div>
+										<div class="form-group col-6">
+											<label style="font-size: 1rem;">Correo electónico</label>
+											<input type="text" class="form-control" name="email_factura" id="email_factura">
+										</div>
+										{{-- acordion --}}
+										<div class="kt-portlet">
+											<div class="kt-portlet__body p-0">
+												<div class="accordion accordion-light">
+													<div class="card">
+														<div class="card-header" id="headingOne">
+															<div class="card-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+																<i class="flaticon2-plus"></i> Agregar Más
+															</div>
+														</div>
+														<div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+															<div class="card-body">
+																<div class="form-row">
+																	<div class="form-group col-6">
+																		<label style="font-size: 1rem;">Calle</label>
+																		<input type="text" class="form-control" name="calle_nro" id="calle_nro">
+																	</div>
+																	<div class="form-group col-6">
+																		<label style="font-size: 1rem;">Número</label>
+																		<input type="text" class="form-control" name="nro_exterior" id="nro_exterior">
+																	</div>
+																	<div class="form-group col-6">
+																		<label style="font-size: 1rem;">Número interior</label>
+																		<input type="text" class="form-control" name="nro_interior" id="nro_interior">
+																	</div>
+																	{{-- <div class="form-group col-6">
+																		<label style="font-size: 1rem;">Localidad</label>
+																		<select class="form-control kt-selectpicker" data-live-search="true" data-size="3" name="gos_fac_region_localidad_id" id="gos_fac_region_localidad_id">
+																		@if (isset($listaLocalidades))
+																			@foreach ($listaLocalidades as $localidad)
+																			<option value="{{$localidad->gos_region_localidad_id}}"> {{$localidad->nomb_localidad}}</option>
+																			@endforeach
+																		@endif
+																		</select>
+																	</div> --}}
+																	<div class="form-group col-6">
+																		<label style="font-size: 1rem;">Código Postal</label>
+																		<input type="text" class="form-control" name="codigo_postal" id="codigo_postal">
+																	</div>
+																	<div class="form-group col-6">
+																		<label style="font-size: 1rem;">Municipio</label>
+																		<select class="form-control kt-selectpicker" data-live-search="true" data-size="5" name="gos_fac_region_municipio_id" id="gos_fac_region_municipio_id" required>
+																		@if(isset($listaMunicipios))
+																			@foreach ($listaMunicipios as $municipio)
+																			<option value="{{$municipio->gos_region_municipio_id}}"> {{$municipio->municipio_estado}}</option>
+																			@endforeach
+																		@endif
+																		</select>
+																	</div>
+                                 <!-- <div class="col-6">
+                                    <div class="form-group">
+                                      <label style="font-size: 1rem;">Estado</label>
+                                      <select class="form-control kt-selectpicker" data-live-search="true" data-size="5" name="estado" id="estado">
+                                        @isset($listaEstados)
+                                          @foreach($listaEstados as $estado)
+                                          <option value="{{$estado->gos_region_estado_id}}">{{$estado->nomb_estado}}</option>
+                                          @endforeach
+                                        @endisset
+                                      </select>
+                                    </div>
+                                  </div> -->
+                                  <div class="col-6">
+                                    <div class="form-group">
+                                      <label style="font-size: 1rem;">Colonia</label>
+                                      <select class="form-control kt-selectpicker" data-live-search="true" data-size="5" name="gos_fac_region_colonia_id" id="gos_fac_region_colonia_id">
+                                        @foreach($listaColonias as $colonia)
+                                        <option value="{{$colonia->gos_region_colonia_id}}">{{$colonia->nomb_asentamiento}}</option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                  </div>
+																	<div class="form-group col-12">
+																		<label style="font-size: 1rem;">Indicaciones para facturar</label>
+																		<textarea class="form-control" name="indicaciones" id="indicaciones" rows="8"></textarea>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							<!--CONDICIONES DE CREDITO-->
+								<div class="tab-pane" id="clienteconfiguracion" role="tabpanel">
+									<div class="clienteswitch">
+										<div class="form-group row">
+											<label class="col-9 col-form-label">Días de crédito para facturado</label>
+											<div class="col-3">
+												<span class="kt-switch kt-switch--sm kt-switch--icon">
+													<label>
+														<input type="checkbox" value="1" onclick="dias_credito.disabled = !this.checked">
+														<span></span>
+													</label>
+												</span>
+											</div>
+											<div class="col-9">
+												<input class="form-control form-control-sm" type="text" name="dias_credito" id="dias_credito" disabled>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-9 col-form-label">Monto del crédito</label>
+											<div class="col-3">
+												<span class="kt-switch kt-switch--sm kt-switch--icon">
+													<label>
+														<input type="checkbox" value="1" onclick="monto_maximo_credito.disabled = !this.checked">
+														<span></span>
+													</label>
+												</span>
+											</div>
+											<div class="col-9">
+												<input class="form-control form-control-sm" type="text" name="monto_maximo_credito" id="monto_maximo_credito" disabled>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-9 col-form-label">Número de cuenta del cliente</label>
+											<div class="col-3">
+												<span class="kt-switch kt-switch--sm kt-switch--icon">
+													<label>
+														<input type="checkbox" value="1" onclick="nro_cta_cliente.disabled = !this.checked">
+														<span></span>
+													</label>
+												</span>
+											</div>
+											<div class="col-9">
+												<input class="form-control form-control-sm" type="text" name="nro_cta_cliente" id="nro_cta_cliente" disabled>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="kt-portlet__foot p-2">
+						<button type="button" class="btn btn-success btn-block" id="btn-guardar-cliente">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--end::Modal-->
